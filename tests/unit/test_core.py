@@ -39,3 +39,28 @@ def test_truncate_negative_n():
     text = "Hello World"
     result = c.truncate(text, -1)
     assert result == ""
+
+def test_truncate_empty_string():
+    text = ""
+    result = c.truncate(text, 5)
+    assert result == ""
+
+def test_truncate_single_character():
+    text = "A"
+    result = c.truncate(text, 1)
+    assert result == "A"
+
+def test_truncate_n_less_than_three():
+    text = "Testing"
+    result = c.truncate(text, 2)
+    assert result == "Te"
+
+def test_truncate_with_trailing_spaces():
+    text = "Hello   "
+    result = c.truncate(text, 5)
+    assert result == "He..."
+
+def test_truncate_preserves_original_type():
+    text = "Data"
+    result = c.truncate(text, 10)
+    assert isinstance(result, str)
