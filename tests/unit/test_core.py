@@ -23,3 +23,26 @@ def test_remove_punctuation_comma():
     clean_text = c.remove_punctuation(sample_text)
     assert clean_text == "red blue green pink"
 
+
+def test_remove_punctuation_at():
+    sample_text = "g@briel@ hol@"
+    clean_text = c.remove_punctuation(sample_text)
+    assert clean_text == "gbriel hol"
+
+
+def test_remove_punctuation_moneysign():
+    sample_text = "$500"
+    clean_text = c.remove_punctuation(sample_text)
+    assert clean_text == "500"
+
+
+def test_remove_punctuation_hashtag():
+    sample_text = "#class #python #MIBA"
+    clean_text = c.remove_punctuation(sample_text)
+    assert clean_text == "class python MIBA"
+
+
+def test_remove_punctuation_diagonals():
+    sample_text = "code/test python/test"
+    clean_text = c.remove_punctuation(sample_text)
+    assert clean_text == "codetest pythontest"
