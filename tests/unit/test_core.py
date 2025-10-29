@@ -1,5 +1,6 @@
 
-import src.textutils.core as c 
+#import src.textutils.core as c 
+import textutils.core as c
 
 def test_slugify_basic():
     assert c.slugify("Hello World") == "hello-world"
