@@ -133,3 +133,24 @@ The function is **case-insensitive** and reverses all characters, including punc
   - Reverse accented
 
 ---
+
+### Shared Feature: `capitalize_sentences(text: str) -> str:`
+
+Collaborative branch developed with **gabrielamendez22**.  
+Initial tests were written by **gabrielamendez22**, the implementation was completed by **Petter Prydz**. Both of us validated the tests.
+
+- Ensures that the first letter of each sentence is capitalized.   
+- Convert the entire string to lowercase for consistency
+- Define sentence separators, " . , ! , ?"
+- Iterate through the string, looking for sentence enders 
+
+**Test details:**
+- Branch: `feat/capitalize_sentences`  
+- Status: 100 % test coverage (verified with `pytest`)  
+- Covered edge cases:
+  - Capitalized first world of one sentence
+  - Capitalize the first word after exclamation mark 
+  - Capitalize the first word after regular point 
+  - Capitalize the first word after question mark 
+
+--------------------------------------------------------------------------------
