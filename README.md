@@ -182,7 +182,7 @@ Checks if a given text is a palindrome (ignoring case, punctuation, and spaces).
 
 ---
 
-## Feature 2: `average_word_length(text: str) -> int`
+### Feature 2: `average_word_length(text: str) -> int`
 
 Calculates the average length of words in a given text, considering only letters and numbers.
 
