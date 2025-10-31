@@ -159,11 +159,10 @@ Initial tests were written by **gabrielamendez22**, the implementation was compl
 ---
 ### Feature 1: `remove_punctuation(text)`
 Remove all punctuation marks (`-, ., !, ?, @, etc`) from the input string. 
-The function is **case-insensitive** and ignores punctuation.
 - Uses the built-in string.punctuation constant to define all characters to be removed.  
- - Applies the translation table using the text.translate(...) method for fast, single-pass character removal. 
+- Applies the translation table using the text.translate(...) method for fast, single-pass character removal. 
 - Uses `collections.Counter` for efficient counting  
-  - Always returns the resulting string with no punctuation marks.
+- Always returns the resulting string with no punctuation marks.
 
 **Test details:**  
 - Branch: `feat/remove_punctuation`  
@@ -173,7 +172,6 @@ The function is **case-insensitive** and ignores punctuation.
   - Remove question mark
   - Remove double points  
   - Remove comma
-
   - Remove money sign
   - Remove hashtag
   - Remove diagonals  
