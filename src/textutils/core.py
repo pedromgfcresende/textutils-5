@@ -178,14 +178,10 @@ def capitalize_sentences(text: str) -> str:
     
     for i, char in enumerate(result):
         if char in sentence_enders:
-            try:
-                j = i + 1 
-                while j < len(result) and result[j] == ' ':
-                    j += 1
-                if j < len(result):
-                    result = result[:j] + result[j].upper() + result[j+1:]
-                    
-            except IndexError:
-                break 
+            j = i + 1 
+            while j < len(result) and result[j] == ' ':
+                j += 1
+            if j < len(result):
+                result = result[:j] + result[j].upper() + result[j+1:]
 
     return result

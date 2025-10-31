@@ -55,6 +55,14 @@ def test_is_palindrome_numbers_and_special_chars():
     text2 = '12@#21'
     assert c.is_palindrome(text2) == True 
 
+def test_is_palindrome_invalid_type_raises():
+    with pytest.raises(ValueError):
+        c.is_palindrome(['not', 'a', 'string'])
+
+def test_is_palindrome_with_integer_input():
+    assert c.is_palindrome(121) is True
+    assert c.is_palindrome(123) is False
+
 # --------------------------------------------------------
 
 def test_average_simple_sentence():
@@ -428,3 +436,13 @@ def test_capitalize_sentences_after_question():
     sample_text = "Hello? are you home?"
     clean_text = c.capitalize_sentences(sample_text)
     assert clean_text == "Hello? Are you home?"
+
+def test_capitalize_sentences_returns_final_result():
+   
+    text = "hello. this is a test! how are you?"
+    expected = "Hello. This is a test! How are you?"
+    result = c.capitalize_sentences(text)
+    
+    assert result == expected
+    assert c.capitalize_sentences('') == ''
+
