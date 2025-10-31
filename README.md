@@ -105,3 +105,31 @@ Initial tests were written by **GianlucaBave**, the implementation was completed
   - Text shorter or equal to the limit  
   - Trailing spaces and type checks
 
+--------------------------------------------------------------------------------
+
+## Group Member: Petter Prydz
+
+---
+
+### Feature 1: `reverse_string_Petter(text: str) -> dict`
+
+Reverses all characters in the input string.  
+The function is **case-insensitive** and reverses all characters, including punctuation and spaces excatly as thei appear.
+
+- Works for words, sentences, and numbers.
+- Handles punctuation and spaces correctly (e.g., "Hello!" → "!olleH").
+- Returns an empty string unchanged.
+- Raises TypeError if the input is not a string.
+- Simple and efficient one-line reversal using Python slicing.
+
+**Test details:**  
+- Branch: `feat/reverse_String_Petter`  
+- Status: 100 % test coverage (all tests passed with `pytest`)  
+- Covered edge cases:
+  - Reverse basic word  
+  - Numbers and text combined 
+  - Mixed casing and spaces  
+  - Palindromes
+  - Reverse accented
+
+---
