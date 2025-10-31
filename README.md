@@ -154,3 +154,36 @@ Initial tests were written by **gabrielamendez22**, the implementation was compl
   - Capitalize the first word after question mark 
 
 --------------------------------------------------------------------------------
+
+## Group Member: Gabriela Mendez
+---
+### Feature 1: `remove_punctuation(text)`
+Remove all punctuation marks (`-, ., !, ?, @, etc`) from the input string. 
+The function is **case-insensitive** and ignores punctuation.
+- Uses the built-in string.punctuation constant to define all characters to be removed.  
+ - Applies the translation table using the text.translate(...) method for fast, single-pass character removal. 
+- Uses `collections.Counter` for efficient counting  
+  - Always returns the resulting string with no punctuation marks.
+
+**Test details:**  
+- Branch: `feat/remove_punctuation`  
+- Status: 100 % test coverage (all tests passed with `pytest`)  
+- Covered edge cases:
+  - Punctuation in more than one sentence 
+  - Remove question mark
+  - Remove double points  
+  - Remove comma
+
+  - Remove money sign
+  - Remove hashtag
+  - Remove diagonals  
+  - Remove " @ "
+
+  ---
+
+### Shared Feature: `capitalize_sentences(text: str) -> str:`
+
+Done with  **Petter Prydz**.
+
+
+--------------------------------------------------------------------------------
