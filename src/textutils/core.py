@@ -141,3 +141,8 @@ def word_count(text: str) -> dict:
     words = text.split()
 
     return dict(Counter(words))
+
+# -------------------------------------------------------------------
+
+def reverse_string(text):
+    return text[::-1]
