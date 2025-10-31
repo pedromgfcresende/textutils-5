@@ -1,5 +1,6 @@
 import re
 import string
+from collections import Counter
 
 def is_palindrome(text):
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -128,6 +129,15 @@ def slugify(text):
 
     return s
 
+# -------------------------------------------------------------------
 
+def word_count(text: str) -> dict:
 
+    text = text.lower()
 
+    for ch in ",.!?;:-()[]{}\"'":
+        text = text.replace(ch, " ")
+
+    words = text.split()
+
+    return dict(Counter(words))
