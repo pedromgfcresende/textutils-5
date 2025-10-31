@@ -8,8 +8,8 @@ A small collaborative Python package that provides simple text utilities for com
 
 1. Clone the repository:
   ```bash
-  git clone https://github.com/<owner>/textutils-<team>.git
-  cd textutils-<team>
+  git clone https://github.com/pedromgfcresende/textutils-5.git
+  cd textutils-5
   ```
 
 
@@ -49,7 +49,7 @@ pytest --cov=src/textutils --cov-report=term-missing
 
 ---
 
-### Feature 1: `count_vowels(text, *, include_y=False)`
+### Feature 1: `count_vowels(text: str, *, include_y=False) -> int`
 
 Counts the number of vowels (`a, e, i, o, u`) in a given text
 
@@ -58,7 +58,7 @@ Counts the number of vowels (`a, e, i, o, u`) in a given text
 - Raises `TypeError` if input is not a string  
 
 **Test details:**
-- Tested in: `tests/unit/test_core.py` 
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/count_vowels`  
 
 --------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ The function is **case-insensitive** and ignores punctuation.
 - Uses `collections.Counter` for efficient counting  
 
 **Test details:**  
-- Tested in: `tests/unit/test_core.py`  
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/word_count`  
 
 - Covered edge cases:
@@ -101,6 +101,7 @@ Sentences are assumed to end with `.`, `!`, or `?`. Returns `0` if the input is 
 - Handles edge cases such as trailing punctuation, newlines, or missing sentence delimiters  
 
 **Test details:**
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/sentence_count`   
 - Covered edge cases:
   - No punctuation → treated as one sentence  
@@ -126,6 +127,7 @@ The function is **case-insensitive** and reverses all characters, including punc
 - Simple and efficient one-line reversal using Python slicing.
 
 **Test details:**  
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/reverse_String_Petter`  
 - Covered edge cases:
   - Reverse basic word  
@@ -138,7 +140,7 @@ The function is **case-insensitive** and reverses all characters, including punc
 
 ## Group Member: Gabriela Mendez
 ---
-### Feature 1: `remove_punctuation(text)`
+### Feature 1: `remove_punctuation(text: str) -> str`
 
 Remove all punctuation marks (`-, ., !, ?, @, etc`) from the input string. 
 
@@ -148,6 +150,7 @@ Remove all punctuation marks (`-, ., !, ?, @, etc`) from the input string.
 - Always returns the resulting string with no punctuation marks.
 
 **Test details:**  
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/remove_punctuation`  
 - Covered edge cases:
   - Punctuation in more than one sentence 
@@ -165,7 +168,7 @@ Remove all punctuation marks (`-, ., !, ?, @, etc`) from the input string.
 
 ---
 
-### Feature 1: is_palindrome(text)
+### Feature 1: `is_palindrome(text: str) -> str`
 
 Checks if a given text is a palindrome (ignoring case, punctuation, and spaces).
 
@@ -174,11 +177,12 @@ Checks if a given text is a palindrome (ignoring case, punctuation, and spaces).
 - Returns True if the cleaned text reads the same forwards and backwards
 
 **Test details:**  
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/is_palindrome` 
 
 ---
 
-## Feature 2: average_word_length(text)
+## Feature 2: `average_word_length(text: str) -> int`
 
 Calculates the average length of words in a given text, considering only letters and numbers.
 
@@ -187,6 +191,7 @@ Calculates the average length of words in a given text, considering only letters
 - Returns the average length rounded to the nearest integer
 
 **Test details:**  
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/average_word_length` 
 
 --------------------------------------------------------------------------------
@@ -195,7 +200,7 @@ Calculates the average length of words in a given text, considering only letters
 
 ---
 
-### Shared Feature: `slugify(text)`
+### Shared Feature: `slugify(text: str) -> str`
 
 - Converts all characters to lowercase  
 - Removes dots and replaces them with spaces  
@@ -204,7 +209,7 @@ Calculates the average length of words in a given text, considering only letters
 - Raises `ValueError` if the input is not a string  
 
 **Test details:**
-- Tested in: `tests/unit/test_core.py`  
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/slugify`  
 
 ---
@@ -220,6 +225,7 @@ Calculates the average length of words in a given text, considering only letters
 - Ensures output type consistency (`str`)  
 
 **Test details:**
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/truncate`  
 - Covered edge cases:
   - Zero, negative, or very small `n` values  
@@ -229,7 +235,7 @@ Calculates the average length of words in a given text, considering only letters
 
 ---
 
-### Shared Feature: `capitalize_sentences(text: str) -> str:`
+### Shared Feature: `capitalize_sentences(text: str) -> str`
 
 - Ensures that the first letter of each sentence is capitalized.   
 - Convert the entire string to lowercase for consistency
@@ -237,6 +243,7 @@ Calculates the average length of words in a given text, considering only letters
 - Iterate through the string, looking for sentence enders 
 
 **Test details:**
+- Tested in: `tests/unit/test_core.py` | `tests/integration/test_end_to_end.py`
 - Branch: `feat/capitalize_sentences`  
 - Covered edge cases:
   - Capitalized first world of one sentence
@@ -247,6 +254,8 @@ Calculates the average length of words in a given text, considering only letters
 --------------------------------------------------------------------------------
 
 # Team
+
+---
 
 - Pedro Resende: https://github.com/pedromgfcresende
 - Gabriela Mendez: https://github.com/gabrielamendez22

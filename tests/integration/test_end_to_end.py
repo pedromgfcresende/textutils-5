@@ -8,7 +8,7 @@ def test_complex_chain_palindrome_with_punctuation_removal_and_vowels():
     palindrome_result = c.is_palindrome(cleaned)
     assert palindrome_result is True
     vowel_count = c.count_vowels(cleaned)
-    assert vowel_count == 8  # m,a,a,i,e,i,a,a
+    assert vowel_count == 8
 
 def test_complex_slugify_capitalize_and_word_count():
     original = "Hello, World! Welcome to the #Python world."
@@ -47,5 +47,3 @@ def test_complex_sentence_count_capitalize_and_word_count():
     wc = c.word_count(capitalized)
     assert wc.get("you", 0) == 2
     assert wc.get("hello", 0) == 1
-
-
