@@ -64,3 +64,19 @@ def test_truncate_preserves_original_type():
     text = "Data"
     result = c.truncate(text, 10)
     assert isinstance(result, str)
+
+def truncate(text, number_of_letters):
+    """
+    Returns a truncated version of the input string, cutting it off at n characters.
+    ...
+    """
+    if text is None:
+        return ''
+        
+    if number_of_letters <= 0:
+        return ''
+    
+    if len(text) <= number_of_letters:
+        return text
+    ...
+
