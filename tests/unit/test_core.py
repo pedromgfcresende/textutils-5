@@ -442,7 +442,7 @@ def test_capitalize_sentences_returns_final_result():
     text = "hello. this is a test! how are you?"
     expected = "Hello. This is a test! How are you?"
     result = c.capitalize_sentences(text)
-    
+
     assert result == expected
     assert c.capitalize_sentences('') == ''
 

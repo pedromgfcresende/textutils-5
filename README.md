@@ -1,4 +1,47 @@
-# textutils-5
+# Textutils
+
+A small collaborative Python package that provides simple text utilities for common string operations and analysis
+
+---
+
+## Installation
+
+1. Clone the repository:
+  ```bash
+  git clone https://github.com/<owner>/textutils-<team>.git
+  cd textutils-<team>
+  ```
+
+
+2. Create the environment (with micromamba):
+
+   ```bash
+   micromamba create -f environment.yml -y
+   micromamba activate textutils
+   ```
+
+3. Install the package in editable mode:
+
+   ```bash
+   pip install -e .
+   ```
+
+---
+
+## Running Tests
+
+To run all tests and check coverage:
+
+```bash
+pytest
+```
+
+To see detailed coverage information:
+
+```bash
+pytest --cov=src/textutils --cov-report=term-missing
+```
+
 
 --------------------------------------------------------------------------------
 
@@ -8,31 +51,15 @@
 
 ### Feature 1: `count_vowels(text, *, include_y=False)`
 
-Counts the number of vowels (`a, e, i, o, u`) in a given text.
+Counts the number of vowels (`a, e, i, o, u`) in a given text
 
 - Optional parameter `include_y=True` counts `'y'` as a vowel  
 - Ignores case (works for uppercase and lowercase letters)  
 - Raises `TypeError` if input is not a string  
 
 **Test details:**
-- Tested in: `tests/unit/test_core2.py`  
+- Tested in: `tests/unit/test_core.py` 
 - Branch: `feat/count_vowels`  
-- Status: 100 % test coverage (tested with `pytest` and parameterized tests)
-
----
-
-### Shared Feature: `slugify(text)`
-
-- Converts all characters to lowercase  
-- Removes dots and replaces them with spaces  
-- Replaces spaces and non-alphanumeric characters with hyphens (`-`)  
-- Removes leading, trailing, and repeated hyphens  
-- Raises `ValueError` if the input is not a string  
-
-**Test details:**
-- Tested in: `tests/unit/test_core.py`  
-- Branch: `feat/slugify`  
-- Status: All 8 tests passed successfully
 
 --------------------------------------------------------------------------------
 
@@ -52,8 +79,9 @@ The function is **case-insensitive** and ignores punctuation.
 - Uses `collections.Counter` for efficient counting  
 
 **Test details:**  
+- Tested in: `tests/unit/test_core.py`  
 - Branch: `feat/word_count`  
-- Status: 100 % test coverage (all tests passed with `pytest`)  
+
 - Covered edge cases:
   - Empty strings and punctuation-only input  
   - Mixed casing and multiple spaces  
@@ -73,37 +101,12 @@ Sentences are assumed to end with `.`, `!`, or `?`. Returns `0` if the input is 
 - Handles edge cases such as trailing punctuation, newlines, or missing sentence delimiters  
 
 **Test details:**
-- Branch: `feat/sentence_count`  
-- Status: 100 % test coverage (all tests passed with `pytest`)  
+- Branch: `feat/sentence_count`   
 - Covered edge cases:
   - No punctuation → treated as one sentence  
   - Empty or `None` input → returns 0  
   - Mixed punctuation (`.`, `!`, `?`)  
   - Newlines between sentences  
-
----
-
-### Shared Feature: `truncate(text: str, number_of_letters: int) -> str`
-
-Collaborative branch developed with **pedromgfcresende**.  
-Initial tests were written by **GianlucaBave**, the implementation was completed by **pedromgfcresende**, and additional tests and validations were later added by **GianlucaBave**.
-
-- Returns a truncated version of the input string, limited to `n` characters  
-- Adds `"..."` at the end if the text exceeds `n` characters, unless `n ≤ 3`  
-- Handles edge cases such as:
-  - `n <= 0` → returns empty string  
-  - Unicode and newline characters  
-  - Text shorter than `n` (returns unchanged)  
-- Ensures output type consistency (`str`)  
-
-**Test details:**
-- Branch: `feat/truncate`  
-- Status: 100 % test coverage (verified with `pytest`)  
-- Covered edge cases:
-  - Zero, negative, or very small `n` values  
-  - Unicode and newline handling  
-  - Text shorter or equal to the limit  
-  - Trailing spaces and type checks
 
 --------------------------------------------------------------------------------
 
@@ -124,7 +127,6 @@ The function is **case-insensitive** and reverses all characters, including punc
 
 **Test details:**  
 - Branch: `feat/reverse_String_Petter`  
-- Status: 100 % test coverage (all tests passed with `pytest`)  
 - Covered edge cases:
   - Reverse basic word  
   - Numbers and text combined 
@@ -132,33 +134,14 @@ The function is **case-insensitive** and reverses all characters, including punc
   - Palindromes
   - Reverse accented
 
----
-
-### Shared Feature: `capitalize_sentences(text: str) -> str:`
-
-Collaborative branch developed with **gabrielamendez22**.  
-Initial tests were written by **gabrielamendez22**, the implementation was completed by **Petter Prydz**. Both of us validated the tests.
-
-- Ensures that the first letter of each sentence is capitalized.   
-- Convert the entire string to lowercase for consistency
-- Define sentence separators, " . , ! , ?"
-- Iterate through the string, looking for sentence enders 
-
-**Test details:**
-- Branch: `feat/capitalize_sentences`  
-- Status: 100 % test coverage (verified with `pytest`)  
-- Covered edge cases:
-  - Capitalized first world of one sentence
-  - Capitalize the first word after exclamation mark 
-  - Capitalize the first word after regular point 
-  - Capitalize the first word after question mark 
-
 --------------------------------------------------------------------------------
 
 ## Group Member: Gabriela Mendez
 ---
 ### Feature 1: `remove_punctuation(text)`
+
 Remove all punctuation marks (`-, ., !, ?, @, etc`) from the input string. 
+
 - Uses the built-in string.punctuation constant to define all characters to be removed.  
 - Applies the translation table using the text.translate(...) method for fast, single-pass character removal. 
 - Uses `collections.Counter` for efficient counting  
@@ -166,7 +149,6 @@ Remove all punctuation marks (`-, ., !, ?, @, etc`) from the input string.
 
 **Test details:**  
 - Branch: `feat/remove_punctuation`  
-- Status: 100 % test coverage (all tests passed with `pytest`)  
 - Covered edge cases:
   - Punctuation in more than one sentence 
   - Remove question mark
@@ -177,11 +159,103 @@ Remove all punctuation marks (`-, ., !, ?, @, etc`) from the input string.
   - Remove diagonals  
   - Remove " @ "
 
-  ---
+--------------------------------------------------------------------------------
+
+## Group Member: Pedro Resende
+
+---
+
+### Feature 1: is_palindrome(text)
+
+Checks if a given text is a palindrome (ignoring case, punctuation, and spaces).
+
+- Accepts strings and numbers (converts numbers to strings)
+- Raises ValueError if input is not a string or number
+- Returns True if the cleaned text reads the same forwards and backwards
+
+**Test details:**  
+- Branch: `feat/is_palindrome` 
+
+---
+
+## Feature 2: average_word_length(text)
+
+Calculates the average length of words in a given text, considering only letters and numbers.
+
+- Splits text into words using whitespace
+- Counts only letters and numbers in each word
+- Returns the average length rounded to the nearest integer
+
+**Test details:**  
+- Branch: `feat/average_word_length` 
+
+--------------------------------------------------------------------------------
+
+## Shared Features: 
+
+---
+
+### Shared Feature: `slugify(text)`
+
+- Converts all characters to lowercase  
+- Removes dots and replaces them with spaces  
+- Replaces spaces and non-alphanumeric characters with hyphens (`-`)  
+- Removes leading, trailing, and repeated hyphens  
+- Raises `ValueError` if the input is not a string  
+
+**Test details:**
+- Tested in: `tests/unit/test_core.py`  
+- Branch: `feat/slugify`  
+
+---
+
+### Shared Feature: `truncate(text: str, number_of_letters: int) -> str`
+
+- Returns a truncated version of the input string, limited to `n` characters  
+- Adds `"..."` at the end if the text exceeds `n` characters, unless `n ≤ 3`  
+- Handles edge cases such as:
+  - `n <= 0` → returns empty string  
+  - Unicode and newline characters  
+  - Text shorter than `n` (returns unchanged)  
+- Ensures output type consistency (`str`)  
+
+**Test details:**
+- Branch: `feat/truncate`  
+- Covered edge cases:
+  - Zero, negative, or very small `n` values  
+  - Unicode and newline handling  
+  - Text shorter or equal to the limit  
+  - Trailing spaces and type checks
+
+---
 
 ### Shared Feature: `capitalize_sentences(text: str) -> str:`
 
-Done with  **Petter Prydz**.
+- Ensures that the first letter of each sentence is capitalized.   
+- Convert the entire string to lowercase for consistency
+- Define sentence separators, " . , ! , ?"
+- Iterate through the string, looking for sentence enders 
 
+**Test details:**
+- Branch: `feat/capitalize_sentences`  
+- Covered edge cases:
+  - Capitalized first world of one sentence
+  - Capitalize the first word after exclamation mark 
+  - Capitalize the first word after regular point 
+  - Capitalize the first word after question mark 
 
 --------------------------------------------------------------------------------
+
+# Team
+
+- Pedro Resende: https://github.com/pedromgfcresende
+- Gabriela Mendez: https://github.com/gabrielamendez22
+- Gianluca Bavelloni: https://github.com/GianlucaBave
+- Petter Prydz: https://github.com/petterprydz
+- Mats Hoffmann: https://github.com/Matshoffmann
+
+
+
+
+
+
