@@ -146,3 +146,21 @@ def word_count(text: str) -> dict:
 
 def reverse_string(text):
     return text[::-1]
+
+# -------------------------------------------------------------------
+
+def sentence_count(text):
+
+    """
+    Counts the number of sentences in the given text.
+    Sentences are assumed to end with '.', '!', or '?'.
+    Returns 0 if text is empty or None.
+    """
+
+    if not text:
+        return 0
+
+    sentences = re.split(r'[.!?]+', text)
+    sentences = [s.strip() for s in sentences if s.strip()]
+
+    return len(sentences)
