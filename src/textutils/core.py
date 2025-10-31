@@ -1,3 +1,6 @@
+import re
+import string
+
 def is_palindrome(text):
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -44,7 +47,7 @@ def average_word_length(text):
 # -------------------------------------------------------------------
 
 def remove_punctuation(text):
-    import string
+
     """
     Removes punctuation from the input text.
 
@@ -101,3 +104,30 @@ def truncate(text, number_of_letters):
             output = word
 
     return output
+
+# -------------------------------------------------------------------
+
+def slugify(text):
+    
+    """
+    - Convert all characters to lowercase
+    - Remove final dots (periods) and replaces them with spaces
+    - Replace spaces and other non-alphanumeric characters with hyphens
+    - Remove leading, trailing, and repeated hyphens
+    - Raise a ValueError if input is not a string
+    """
+    if not isinstance(text, str):
+        raise ValueError("Input must be a string")
+
+    s = text.lower()
+    s = s.replace("'", "")
+    s = re.sub(r'(?<=\d)\.(?=\d)', '', s)
+    s = s.replace('.', ' ')
+    s = re.sub(r'[^a-z0-9]+', '-', s)
+    s = s.strip('-')
+
+    return s
+
+
+
+
